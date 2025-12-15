@@ -3,95 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Arpan's Audit</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    <!-- Favicon placeholder -->
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-</head>
-<body>
-
-    <div class="app-container">
-        <!-- Audio Assets -->
-        <audio id="sfx-start" src="start.mp3" preload="auto"></audio>
-        <audio id="sfx-success" src="success.mp3" preload="auto"></audio>
-        <audio id="sfx-click" src="click.mp3" preload="auto"></audio>
-
-        <!-- Background Layers -->
-        <div class="bg-layer"></div>
-        <div class="cyber-shape shape-1"></div>
-        <div class="cyber-shape shape-2"></div>
-
-        <!-- Main Glass Panel -->
-        <div class="glass-container">
-            
-            <!-- HEADER -->
-            <header>
-                <div class="brand">
-                    <span class="logo-text">ARPAN'S AUDIT</span>
-                    <div class="status-indicator"></div>
-                </div>
-                <button id="info-btn" class="icon-btn">?</button>
-            </header>
-
-            <!-- RIDE PANEL (Active View) -->
-            <div id="ride-panel" class="panel">
-                
-                <!-- NEW: LIFETIME STATS HUD -->
-                <div class="lifetime-header">
-                    <div class="stat-box mini">
-                        <span class="label">TOTAL SAVED</span>
-                        <span class="value" id="lifetime-money">₹0</span>
-                    </div>
-                    <div class="stat-box mini">
-                        <span class="label">TOTAL KM</span>
-                        <span class="value" id="lifetime-dist">0.0 KM</span>
-                    </div>
-                </div>
-
-                <div class="hud-ring">
-                    <div class="ring-content">
-                        <h1 id="dist-display">0.00 KM</h1>
-                        <div class="sub-stats">
-                            <span id="time-display">00:00</span>
-                            <span class="divider">|</span>
-                            <span id="speed-display">0.0</span> <span class="unit">KM/H</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="gps-status" class="status-text">AWAITING SATELLITES...</div>
-                
-                <button id="action-btn" class="cyber-btn start">INITIATE RIDE</button>
-            </div>
-
-            <!-- REPORT PANEL (Post-Ride View) -->
-            <div id="report-panel" class="panel hidden">
-                <h2 class="section-title">AUDIT REPORT</h2>
-                
-                <div class="hero-stat">
-                    <span class="currency">₹</span>
-                    <span id="money-saved" class="hero-val">0</span>
-                    <div class="hero-label">TOTAL SAVED (THIS RIDE)</div>
-                </div>
-
-                <div class="grid-stats">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Arpan's Commute Audit</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
 </head>
 <body>
 
@@ -112,167 +27,99 @@
                 <div class="sub-status" id="gps-status">SYSTEM READY</div>
             </header>
 
-            <!-- Home Panel: Lifetime Stats (Default View) -->
-            <div id="home-panel">
-                <h2 class="section-title">LIFETIME SAVINGS</h2>
-
-                <!-- Lifetime Hero: Money -->
+            <!-- Main Page: Lifetime Stats (Default View) -->
+            <div id="main-panel">
+                <h2 class="section-title">LIFETIME IMPACT</h2>
+                
+                <!-- Hero Metric: Total Money Saved -->
                 <div class="hero-metric">
                     <span class="currency">₹</span>
-                    <span id="life-money-display">0</span>
-                    <div class="hero-label">TOTAL WALLET SAVED</div>
+                    <span id="lifetime-money">0</span>
+                    <div class="hero-label">TOTAL SAVED</div>
                 </div>
-
-                <!-- Lifetime Grid -->
+                
+                <!-- Impact Grid -->
                 <div class="impact-grid">
+                    <!-- Ice -->
                     <div class="card ice">
                         <div class="icon">❄️</div>
-                        <div class="card-val" id="life-ice-display">0g</div>
-                        <div class="card-sub">TOTAL ICE</div>
+                        <div class="card-val" id="lifetime-ice">0kg</div>
+                        <div class="card-sub">ICE SAVED</div>
                     </div>
-                    <div class="card jeans">
-                        <div class="icon">👖</div>
-                        <div class="card-val" id="life-jeans-display">0</div>
-                        <div class="card-sub">PAIRS GEN</div>
-                    </div>
-                </div>
-
-                <!-- Forest Progress -->
-                <div class="lifetime-stats">
-                    <h3>FOREST GENESIS PROJECT</h3>
-                    <div class="progress-bar">
-                        <div class="fill" id="home-forest-fill"></div>
-                    </div>
-                    <p class="progress-text"><span id="home-forest-count">0</span> / 10 TREES</p>
-                </div>
-                
-                <!-- Active Ride Timer (Hidden when not riding) -->
-                <div id="active-ride-status" class="hidden">
-                    <div class="pulse-ring"></div>
-                    <span id="ride-timer-display">00:00</span>
-                    <span class="status-label">RIDE IN PROGRESS</span>
-                </div>
-
-                <button id="action-btn" class="cyber-btn start">INITIATE RIDE</button>
-            </div>
-
-            <!-- Post-Ride Report (Hidden by default) -->
-            <div id="report-panel" class="hidden">
-                <h2 class="report-header">LATEST RIDE REPORT</h2>
-                
-                <!-- Ride Hero: Money -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Arpan's Commute Audit</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-</head>
-<body>
-
-    <!-- Static Background with Shapes -->
-    <div class="bg-layer">
-        <div class="cyber-shape circle-1"></div>
-        <div class="cyber-shape circle-2"></div>
-        <div class="cyber-shape glow-orb"></div>
-    </div>
-
-    <!-- Main Glass Interface -->
-    <div class="glass-wrapper">
-        <div class="glass-container">
-            
-            <header>
-                <div class="status-indicator" id="status-dot"></div>
-                <h1 class="glitch-text">ARPAN'S AUDIT</h1>
-                <div class="sub-status" id="gps-status">SYSTEM READY</div>
-            </header>
-
-            <!-- Home Panel: Lifetime Stats (Default View) -->
-            <div id="home-panel">
-                <h2 class="section-title">LIFETIME SAVINGS</h2>
-
-                <!-- Lifetime Hero: Money -->
-                <div class="hero-metric">
-                    <span class="currency">₹</span>
-                    <span id="life-money-display">0</span>
-                    <div class="hero-label">TOTAL WALLET SAVED</div>
-                </div>
-
-                <!-- Lifetime Grid -->
-                <div class="impact-grid">
-                    <div class="card ice">
-                        <div class="icon">❄️</div>
-                        <div class="card-val" id="life-ice-display">0g</div>
-                        <div class="card-sub">TOTAL ICE</div>
-                    </div>
-                    <div class="card jeans">
-                        <div class="icon">👖</div>
-                        <div class="card-val" id="life-jeans-display">0</div>
-                        <div class="card-sub">PAIRS GEN</div>
-                    </div>
-                </div>
-
-                <!-- Forest Progress -->
-                <div class="lifetime-stats">
-                    <h3>FOREST GENESIS PROJECT</h3>
-                    <div class="progress-bar">
-                        <div class="fill" id="home-forest-fill"></div>
-                    </div>
-                    <p class="progress-text"><span id="home-forest-count">0</span> / 10 TREES</p>
-                </div>
-                
-                <!-- Active Ride Timer (Hidden when not riding) -->
-                <div id="active-ride-status" class="hidden">
-                    <div class="pulse-ring"></div>
-                    <span id="ride-timer-display">00:00</span>
-                    <span class="status-label">RIDE IN PROGRESS</span>
-                </div>
-
-                <button id="action-btn" class="cyber-btn start">INITIATE RIDE</button>
-            </div>
-
-            <!-- Post-Ride Report (Hidden by default) -->
-            <div id="report-panel" class="hidden">
-                <h2 class="report-header">LATEST RIDE REPORT</h2>
-                
-                <!-- Ride Hero: Money -->
-                <div class="hero-metric">
-                    <span class="currency">₹</span>
-                    <span id="ride-money-saved">0</span>
-                    <div class="hero-label">SAVED THIS RIDE</div>
-                </div>
-                
-                <div class="impact-grid">
-                    <div class="metric-box">
-                        <span class="label">DISTANCE</span>
-                        <span class="value" id="ride-dist-display">0.00 KM</span>
-                    </div>
-                    <div class="metric-box">
-                        <span class="label">DURATION</span>
-                        <span class="value" id="ride-time-final">00:00</span>
-                    </div>
-                </div>
-
-                <!-- Ride Impact Grid -->
-                <div class="impact-grid">
+                    <!-- Pizza -->
                     <div class="card pizza">
                         <div class="icon">🍕</div>
-                        <div class="card-val" id="ride-pizza-earned">0</div>
+                        <div class="card-val" id="lifetime-pizza">0</div>
+                        <div class="card-sub">SLICES</div>
+                    </div>
+                    <!-- Netflix -->
+                    <div class="card netflix">
+                        <div class="icon">📺</div>
+                        <div class="card-val" id="lifetime-netflix">0h</div>
+                        <div class="card-sub">4K STREAM</div>
+                    </div>
+                    <!-- Jeans -->
+                    <div class="card jeans">
+                        <div class="icon">👖</div>
+                        <div class="card-val" id="lifetime-jeans">0%</div>
+                        <div class="card-sub">JEANS GEN</div>
+                    </div>
+                </div>
+
+                <!-- Forest Progress -->
+                <div class="lifetime-stats">
+                    <h3>FOREST GENESIS PROJECT</h3>
+                    <div class="progress-bar">
+                        <div class="fill" id="forest-fill"></div>
+                    </div>
+                    <p class="progress-text"><span id="forest-count">0.00</span> / 10 TREES</p>
+                </div>
+
+                <button id="action-btn" class="cyber-btn start">INITIATE RIDE</button>
+            </div>
+
+            <!-- Post-Ride Report (Current Ride Stats) -->
+            <div id="report-panel" class="hidden">
+                <h2 class="report-header">RIDE COMPLETE</h2>
+                
+                <!-- Current Ride Money -->
+                <div class="hero-metric">
+                    <span class="currency">₹</span>
+                    <span id="ride-money">0</span>
+                    <div class="hero-label">THIS RIDE</div>
+                </div>
+                
+                <!-- Current Ride Impact Grid -->
+                <div class="impact-grid">
+                    <div class="card ice">
+                        <div class="icon">❄️</div>
+                        <div class="card-val" id="ride-ice">0g</div>
+                        <div class="card-sub">ICE SAVED</div>
+                    </div>
+                    <div class="card pizza">
+                        <div class="icon">🍕</div>
+                        <div class="card-val" id="ride-pizza">0</div>
                         <div class="card-sub">SLICES</div>
                     </div>
                     <div class="card netflix">
                         <div class="icon">📺</div>
-                        <div class="card-val" id="ride-netflix-time">0h</div>
+                        <div class="card-val" id="ride-netflix">0h</div>
                         <div class="card-sub">4K STREAM</div>
+                    </div>
+                    <div class="card jeans">
+                        <div class="icon">👖</div>
+                        <div class="card-val" id="ride-jeans">0%</div>
+                        <div class="card-sub">JEANS GEN</div>
                     </div>
                 </div>
 
-                <button onclick="resetApp()" class="cyber-btn reset">RETURN TO DASHBOARD</button>
+                <!-- Ride Stats -->
+                <div class="ride-summary">
+                    <p>DISTANCE: <span id="ride-dist">0.00 KM</span></p>
+                    <p>DURATION: <span id="ride-time">00:00</span></p>
+                </div>
+
+                <button onclick="returnToMain()" class="cyber-btn reset">VIEW LIFETIME STATS</button>
             </div>
 
             <!-- Footer -->
