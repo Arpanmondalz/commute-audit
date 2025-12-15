@@ -119,6 +119,40 @@ h1 {
     letter-spacing: 1px;
 }
 
+/* Live Ride Counters */
+.live-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.live-stat {
+    flex: 1;
+    text-align: center;
+    background: rgba(0, 243, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px 10px;
+}
+
+.live-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.live-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    color: var(--accent-cyan);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
 /* Hero Metric */
 .hero-metric {
     text-align: center;
