@@ -81,59 +81,221 @@
                 </div>
 
                 <div class="grid-stats">
-                    <div class="stat-card">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Arpan's Commute Audit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+</head>
+<body>
+
+    <!-- Static Background with Shapes -->
+    <div class="bg-layer">
+        <div class="cyber-shape circle-1"></div>
+        <div class="cyber-shape circle-2"></div>
+        <div class="cyber-shape glow-orb"></div>
+    </div>
+
+    <!-- Main Glass Interface -->
+    <div class="glass-wrapper">
+        <div class="glass-container">
+            
+            <header>
+                <div class="status-indicator" id="status-dot"></div>
+                <h1 class="glitch-text">ARPAN'S AUDIT</h1>
+                <div class="sub-status" id="gps-status">SYSTEM READY</div>
+            </header>
+
+            <!-- Home Panel: Lifetime Stats (Default View) -->
+            <div id="home-panel">
+                <h2 class="section-title">LIFETIME SAVINGS</h2>
+
+                <!-- Lifetime Hero: Money -->
+                <div class="hero-metric">
+                    <span class="currency">₹</span>
+                    <span id="life-money-display">0</span>
+                    <div class="hero-label">TOTAL WALLET SAVED</div>
+                </div>
+
+                <!-- Lifetime Grid -->
+                <div class="impact-grid">
+                    <div class="card ice">
                         <div class="icon">❄️</div>
-                        <div id="ice-saved" class="val">0.00kg</div>
-                        <div class="label">ICE SAVED</div>
+                        <div class="card-val" id="life-ice-display">0g</div>
+                        <div class="card-sub">TOTAL ICE</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="icon">🍕</div>
-                        <div id="pizza-earned" class="val">0.0</div>
-                        <div class="label">SLICES</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="icon">📺</div>
-                        <div id="netflix-time" class="val">0.0h</div>
-                        <div class="label">4K STREAM</div>
-                    </div>
-                    <div class="stat-card">
+                    <div class="card jeans">
                         <div class="icon">👖</div>
-                        <div id="jeans-percent" class="val">0.0%</div>
-                        <div class="label">JEANS PR.</div>
+                        <div class="card-val" id="life-jeans-display">0</div>
+                        <div class="card-sub">PAIRS GEN</div>
                     </div>
                 </div>
 
-                <div class="forest-tracker">
-                    <div class="tracker-header">
-                        <span>FOREST PLANTATION</span>
-                    </div>
+                <!-- Forest Progress -->
+                <div class="lifetime-stats">
+                    <h3>FOREST GENESIS PROJECT</h3>
                     <div class="progress-bar">
-                        <div id="forest-fill" class="fill" style="width: 0%"></div>
+                        <div class="fill" id="home-forest-fill"></div>
                     </div>
-                    <div class="tracker-footer">
-                        <span id="forest-count">0.00</span> / 10 TREES
-                    </div>
+                    <p class="progress-text"><span id="home-forest-count">0</span> / 10 TREES</p>
+                </div>
+                
+                <!-- Active Ride Timer (Hidden when not riding) -->
+                <div id="active-ride-status" class="hidden">
+                    <div class="pulse-ring"></div>
+                    <span id="ride-timer-display">00:00</span>
+                    <span class="status-label">RIDE IN PROGRESS</span>
                 </div>
 
-                <button onclick="resetApp()" class="cyber-btn secondary">SYSTEM RESET</button>
+                <button id="action-btn" class="cyber-btn start">INITIATE RIDE</button>
             </div>
 
+            <!-- Post-Ride Report (Hidden by default) -->
+            <div id="report-panel" class="hidden">
+                <h2 class="report-header">LATEST RIDE REPORT</h2>
+                
+                <!-- Ride Hero: Money -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Arpan's Commute Audit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+</head>
+<body>
+
+    <!-- Static Background with Shapes -->
+    <div class="bg-layer">
+        <div class="cyber-shape circle-1"></div>
+        <div class="cyber-shape circle-2"></div>
+        <div class="cyber-shape glow-orb"></div>
+    </div>
+
+    <!-- Main Glass Interface -->
+    <div class="glass-wrapper">
+        <div class="glass-container">
+            
+            <header>
+                <div class="status-indicator" id="status-dot"></div>
+                <h1 class="glitch-text">ARPAN'S AUDIT</h1>
+                <div class="sub-status" id="gps-status">SYSTEM READY</div>
+            </header>
+
+            <!-- Home Panel: Lifetime Stats (Default View) -->
+            <div id="home-panel">
+                <h2 class="section-title">LIFETIME SAVINGS</h2>
+
+                <!-- Lifetime Hero: Money -->
+                <div class="hero-metric">
+                    <span class="currency">₹</span>
+                    <span id="life-money-display">0</span>
+                    <div class="hero-label">TOTAL WALLET SAVED</div>
+                </div>
+
+                <!-- Lifetime Grid -->
+                <div class="impact-grid">
+                    <div class="card ice">
+                        <div class="icon">❄️</div>
+                        <div class="card-val" id="life-ice-display">0g</div>
+                        <div class="card-sub">TOTAL ICE</div>
+                    </div>
+                    <div class="card jeans">
+                        <div class="icon">👖</div>
+                        <div class="card-val" id="life-jeans-display">0</div>
+                        <div class="card-sub">PAIRS GEN</div>
+                    </div>
+                </div>
+
+                <!-- Forest Progress -->
+                <div class="lifetime-stats">
+                    <h3>FOREST GENESIS PROJECT</h3>
+                    <div class="progress-bar">
+                        <div class="fill" id="home-forest-fill"></div>
+                    </div>
+                    <p class="progress-text"><span id="home-forest-count">0</span> / 10 TREES</p>
+                </div>
+                
+                <!-- Active Ride Timer (Hidden when not riding) -->
+                <div id="active-ride-status" class="hidden">
+                    <div class="pulse-ring"></div>
+                    <span id="ride-timer-display">00:00</span>
+                    <span class="status-label">RIDE IN PROGRESS</span>
+                </div>
+
+                <button id="action-btn" class="cyber-btn start">INITIATE RIDE</button>
+            </div>
+
+            <!-- Post-Ride Report (Hidden by default) -->
+            <div id="report-panel" class="hidden">
+                <h2 class="report-header">LATEST RIDE REPORT</h2>
+                
+                <!-- Ride Hero: Money -->
+                <div class="hero-metric">
+                    <span class="currency">₹</span>
+                    <span id="ride-money-saved">0</span>
+                    <div class="hero-label">SAVED THIS RIDE</div>
+                </div>
+                
+                <div class="impact-grid">
+                    <div class="metric-box">
+                        <span class="label">DISTANCE</span>
+                        <span class="value" id="ride-dist-display">0.00 KM</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="label">DURATION</span>
+                        <span class="value" id="ride-time-final">00:00</span>
+                    </div>
+                </div>
+
+                <!-- Ride Impact Grid -->
+                <div class="impact-grid">
+                    <div class="card pizza">
+                        <div class="icon">🍕</div>
+                        <div class="card-val" id="ride-pizza-earned">0</div>
+                        <div class="card-sub">SLICES</div>
+                    </div>
+                    <div class="card netflix">
+                        <div class="icon">📺</div>
+                        <div class="card-val" id="ride-netflix-time">0h</div>
+                        <div class="card-sub">4K STREAM</div>
+                    </div>
+                </div>
+
+                <button onclick="resetApp()" class="cyber-btn reset">RETURN TO DASHBOARD</button>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-controls">
+                <button id="info-btn" class="text-link">[ VIEW DATA PROTOCOL ]</button>
+            </div>
         </div>
     </div>
 
-    <!-- Data Modal -->
+    <!-- Data Logic Modal -->
     <div id="data-modal" class="modal hidden">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3>AUDIT LOGIC</h3>
-                <button id="close-modal">X</button>
-            </div>
-            <div id="logic-list" class="logic-list">
-                <!-- JS populates this -->
-            </div>
-            <p class="modal-note">*Base comparison: 110cc Scooter (₹3.0/km)</p>
+            <h3>CALCULATION LOGIC</h3>
+            <p class="modal-subtitle">TARGET: 110CC SCOOTER</p>
+            <div class="data-list" id="logic-list"></div>
+            <button id="close-modal" class="cyber-btn small">CLOSE</button>
         </div>
     </div>
+
+    <!-- Audio Assets -->
+    <audio id="sfx-start" src="start.mp3"></audio>
+    <audio id="sfx-success" src="success.mp3"></audio>
+    <audio id="sfx-click" src="click.mp3"></audio>
 
     <script src="script.js"></script>
 </body>
