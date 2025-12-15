@@ -28,6 +28,8 @@ const btn = document.getElementById('action-btn');
 const gpsStatus = document.getElementById('gps-status');
 const mainPanel = document.getElementById('main-panel');
 const reportPanel = document.getElementById('report-panel');
+const liveCounters = document.getElementById('live-counters');
+const lifetimeSection = document.getElementById('lifetime-section');
 
 // Modal Elements
 const infoBtn = document.getElementById('info-btn');
@@ -88,6 +90,10 @@ function startRide() {
     gpsStatus.textContent = "TRACKING ACTIVE";
     gpsStatus.style.color = "var(--accent-green)";
     
+    // Show live counters, hide lifetime stats
+    liveCounters.classList.remove('hidden');
+    lifetimeSection.classList.add('hidden');
+    
     keepScreenAwake();
 
     watchId = navigator.geolocation.watchPosition(
@@ -117,7 +123,9 @@ function updatePosition(position) {
     if (lastLat) {
         const d = calculateDistance(lastLat, lastLon, lat, lon);
         if (d > 0.005) {
-            totalDist += d; 
+            totalDist += d;
+            // Update live distance counter
+            document.getElementById('live-distance').textContent = totalDist.toFixed(2) + " KM";
         }
     }
 
@@ -147,6 +155,8 @@ function startTimer() {
         const mins = Math.floor(diff / 60000);
         const secs = Math.floor((diff % 60000) / 1000);
         rideTime = `${pad(mins)}:${pad(secs)}`;
+        // Update live duration counter
+        document.getElementById('live-duration').textContent = rideTime;
     }, 1000);
 }
 function pad(n) { return n < 10 ? '0'+n : n; }
@@ -224,6 +234,10 @@ function returnToMain() {
     reportPanel.classList.add('hidden');
     gpsStatus.textContent = "SYSTEM READY";
     
+    // Hide live counters, show lifetime stats
+    liveCounters.classList.add('hidden');
+    lifetimeSection.classList.remove('hidden');
+    
     // Refresh lifetime stats display
     displayLifetimeStats();
 }
@@ -264,4 +278,4 @@ async function keepScreenAwake() {
         try { await navigator.wakeLock.request('screen'); }
         catch (err) { console.log("Wake Lock failed"); }
     }
-}
+        }
