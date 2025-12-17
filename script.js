@@ -94,7 +94,7 @@ function startRide() {
     liveCounters.classList.remove('hidden');
     lifetimeSection.classList.add('hidden');
     
-    keepScreenAwake();
+    requestWakeLock();
 
     watchId = navigator.geolocation.watchPosition(
         updatePosition, 
@@ -112,6 +112,11 @@ function stopRide() {
     btn.textContent = "INITIATE RIDE";
     btn.classList.remove('stop');
     btn.classList.add('start');
+
+    if (wakeLock) {
+        wakeLock.release()
+            .then(() => wakeLock = null);
+    }
     
     generateReport();
 }
@@ -273,9 +278,32 @@ function handleError(err) {
     gpsStatus.style.color = "var(--accent-red)";
 }
 
-async function keepScreenAwake() {
+// --- ROBUST WAKE LOCK SYSTEM ---
+let wakeLock = null;
+
+async function requestWakeLock() {
     if ('wakeLock' in navigator) {
-        try { await navigator.wakeLock.request('screen'); }
-        catch (err) { console.log("Wake Lock failed"); }
-    }
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log("Wake Lock Active");
+           
+            // CRITICAL: If lock is released (by system), note it.
+            wakeLock.addEventListener('release', () => {
+                console.log('Wake Lock Released');
+                // Optional: UI feedback like "SCREEN LOCK LOST"
+            });
+           
+        } catch (err) {
+            console.error(`Wake Lock Error: ${err.name}, ${err.message}`);
         }
+    }
+}
+
+// Re-acquire lock if page visibility changes (user switches back to tab)
+document.addEventListener('visibilitychange', async () => {
+    if (wakeLock !== null && document.visibilityState === 'visible') {
+        console.log("Re-acquiring lock...");
+        await requestWakeLock();
+    }
+});
+
